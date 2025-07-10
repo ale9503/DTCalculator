@@ -1,0 +1,129 @@
+/* styles.css */
+
+/* 1. Variables globales de color y tipografía */
+:root {
+  --font-family: 'Poppins', sans-serif;
+  --font-size: 16px;
+  --color-purple: #7E78D3;
+  --theme-blue: #005DFF;
+}
+
+/* 2. Tipografía global */
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  color: var(--color-purple);
+  margin: 2em;
+}
+
+/* 3. Barra de progreso */
+progress {
+  width: 100%;
+  height: 8px;
+  appearance: none;
+  margin-bottom: 1.5em;
+}
+progress::-webkit-progress-bar {
+  background-color: #e6e6e6;
+  border-radius: 4px;
+}
+progress::-webkit-progress-value {
+  background-color: var(--theme-blue);
+  border-radius: 4px;
+}
+progress::-moz-progress-bar {
+  background-color: var(--theme-blue);
+}
+
+/* 4. Sliders de digitalización */
+.slider {
+  width: 100%;
+  height: 4px;
+  background: #e6e6e6;
+  border-radius: 2px;
+  outline: none;
+  -webkit-appearance: none;
+}
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--theme-blue);
+  cursor: pointer;
+  margin-top: -6px;
+}
+.slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--theme-blue);
+  cursor: pointer;
+}
+
+/* 5. Radio buttons y checkboxes */
+input[type="radio"],
+input[type="checkbox"] {
+  accent-color: var(--theme-blue);
+}
+
+/* Centrado vertical de los radio buttons (ajuste fino) */
+.role-group label {
+  display: inline-flex;
+  align-items: center;
+}
+.role-group input[type="radio"] {
+  margin-right: 0.5em;
+}
+
+/* 6. Iconos de ayuda (❓) */
+label span[title] {
+  color: var(--theme-blue);
+}
+
+/* 7. Estilos de inputs y selects */
+input, select, datalist {
+  width: 100%;
+  padding: 0.5em;
+  margin-bottom: 0.5em;
+  box-sizing: border-box;
+  color: var(--color-purple);
+}
+
+/* 8. Checkbox con texto al lado */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  margin: 1em 0;
+}
+.checkbox-container input[type="checkbox"] {
+  margin: 0;
+}
+.checkbox-container a {
+  color: var(--theme-blue);
+  text-decoration: none;
+}
+.checkbox-container a:hover {
+  text-decoration: underline;
+}
+
+/* 9. Botón “Continuar” */
+button[type="submit"] {
+  background-color: var(--theme-blue);
+  color: #fff;
+  padding: 0.75em 1.5em;
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 1em;
+}
+button[type="submit"]:hover {
+  opacity: 0.9;
+}
+
+/* 10. Ajustes adicionales */
+h1 { margin-bottom: 0.2em; }
+form { max-width: 600px; margin: 0 auto; }
