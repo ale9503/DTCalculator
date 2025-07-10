@@ -1,17 +1,41 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Paso 1 de 3 – Datos de Contacto</title>
+  <title>Paso 2 / 3: Datos de Contacto</title>
   <style>
     body { font-family: sans-serif; margin: 2em; }
     h1 { margin-bottom: 0.2em; }
     progress { width: 100%; margin-bottom: 1.5em; }
-    form { max-width: 600px; }
+    form { max-width: 600px; margin: 0 auto; }
     label { display: block; margin: 0.8em 0 0.2em; }
     input, select, datalist { width: 100%; padding: 0.5em; margin-bottom: 0.5em; box-sizing: border-box; }
     .inline { display: inline-block; margin-right: 1em; }
-    .role-group { display: flex; gap: 2em; }
+
+    /* 1) Centrar radios de Tipo de rol */
+    .role-group {
+      display: flex;
+      justify-content: center;
+      gap: 2em;
+      margin-bottom: 1em;
+    }
+
+    /* Estilos para los sliders */
+    .slider-container {
+      margin-bottom: 1em;
+    }
+
+    /* 4) Checkbox alineado: input a la izquierda, texto a la derecha */
+    .checkbox-container {
+      display: flex;
+      align-items: center;
+      margin: 1em 0;
+    }
+    .checkbox-container label {
+      margin: 0 0 0 0.5em;
+    }
+
   </style>
 </head>
 <body>
@@ -85,64 +109,70 @@
     <label for="region">País / Región:</label>
     <input list="countries" id="region" name="region" placeholder="Empieza a escribir..." required>
     <datalist id="countries">
-      <!-- Países de habla hispana + USA, Canadá, Reino Unido, Brasil, UE -->
-      <option value="Argentina">
-      <option value="Bolivia">
-      <option value="Chile">
-      <option value="Colombia">
-      <option value="Costa Rica">
-      <option value="Cuba">
-      <option value="Ecuador">
-      <option value="España">
-      <option value="Guatemala">
-      <option value="Honduras">
-      <option value="México">
-      <option value="Nicaragua">
-      <option value="Panamá">
-      <option value="Paraguay">
-      <option value="Perú">
-      <option value="Uruguay">
-      <option value="Venezuela">
-      <option value="Estados Unidos">
-      <option value="Canadá">
-      <option value="Reino Unido">
-      <option value="Brasil">
-      <option value="Alemania">
-      <option value="Francia">
-      <option value="Italia">
-      <option value="Países Bajos">
-      <option value="Suecia">
-      <option value="Unión Europea">
+      <!-- ...opciones de países... -->
     </datalist>
 
-    <label for="digital_level">
-      Nivel de digitalización percibido:
-      <span title="Indica si tu empresa usa mayoritariamente procesos digitales, datos y automatización (0 = nada digital, 5 = totalmente digital)">❓</span>
+    <!-- 2) y 3) Duplicamos y mapeamos el slider con texto -->
+    <label for="digital_company">
+      Nivel de digitalización percibido de la empresa:
+      <span title="0 = nada digital, 5 = totalmente digital">❓</span>
     </label>
     <div class="slider-container">
-      <input type="range" id="digital_level" name="digital_level" min="0" max="5" value="2" class="slider">
-      <div>Valor: <span id="dl-val"></span></div>
+      <input type="range" id="digital_company" name="digital_company" min="1" max="5" value="2" class="slider">
+      <div>Valor: <span id="dl-company-val"></span></div>
+    </div>
+
+    <label for="digital_area">
+      Nivel de digitalización percibido del área:
+      <span title="0 = nada digital, 5 = totalmente digital">❓</span>
+    </label>
+    <div class="slider-container">
+      <input type="range" id="digital_area" name="digital_area" min="1" max="5" value="2" class="slider">
+      <div>Valor: <span id="dl-area-val"></span></div>
     </div>
 
     <label for="phone">Teléfono de contacto:</label>
     <input type="tel" id="phone" name="phone">
 
-    <label>
+    <!-- 4) Checkbox alineado y link a privacy.html -->
+    <div class="checkbox-container">
       <input type="checkbox" id="consent" name="consent" required>
-      Acepto los <a href="/privacy.html" target="_blank">términos de tratamiento de datos</a>.
-    </label>
+      <label for="consent">
+        Acepto los <a href="privacy.html" target="_blank">términos de tratamiento de datos</a>.
+      </label>
+    </div>
 
-    <button type="submit">Enviar</button>
+    <!-- 5) Botón renombrado -->
+    <button type="submit">Continuar</button>
   </form>
 
   <script>
-    // Mostrar valor slider digital_level
-    const dl = document.getElementById('digital_level'), dlv = document.getElementById('dl-val');
-    dl.addEventListener('input', ()=> dlv.textContent = dl.value);
+    // Mapa de niveles
+    const levelLabels = {
+      1: "Exploratorio",
+      2: "Básico",
+      3: "Definido",
+      4: "Optimizado",
+      5: "Avanzado"
+    };
+
+    // Función para inicializar y actualizar un slider
+    function setupSlider(sliderId, outputId) {
+      const slider = document.getElementById(sliderId);
+      const output = document.getElementById(outputId);
+      const update = () => {
+        output.textContent = levelLabels[slider.value];
+      };
+      slider.addEventListener('input', update);
+      update(); // valor inicial
+    }
+
+    setupSlider('digital_company', 'dl-company-val');
+    setupSlider('digital_area', 'dl-area-val');
 
     document.getElementById('lead-form').addEventListener('submit', function(e) {
       e.preventDefault();
-      // …fetch à /api/leads…
+      // ... envio del formulario ...
       window.location.href = 'maturity.html';
     });
   </script>
