@@ -1,6 +1,6 @@
 /* styles.css */
 
-/* 1. Variables globales de color y tipografía */
+/* 1. Variables globales: debe ir primero */
 :root {
   --font-family: 'Poppins', sans-serif;
   --font-size: 16px;
@@ -8,12 +8,32 @@
   --theme-blue: #005DFF;
 }
 
-/* 2. Tipografía global */
+/* 2. Tipografía y layout general */
 body {
   font-family: var(--font-family);
   font-size: var(--font-size);
   color: var(--color-purple);
   margin: 2em;
+}
+h1 {
+  margin-bottom: 0.2em;
+}
+form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+label {
+  display: block;
+  margin: 0.8em 0 0.2em;
+}
+input,
+select,
+datalist {
+  width: 100%;
+  padding: 0.5em;
+  margin-bottom: 0.5em;
+  box-sizing: border-box;
+  color: var(--color-purple);
 }
 
 /* 3. Barra de progreso */
@@ -66,8 +86,7 @@ input[type="radio"],
 input[type="checkbox"] {
   accent-color: var(--theme-blue);
 }
-
-/* Centrado vertical de los radio buttons (ajuste fino) */
+/* Centrado vertical fino */
 .role-group label {
   display: inline-flex;
   align-items: center;
@@ -81,16 +100,7 @@ label span[title] {
   color: var(--theme-blue);
 }
 
-/* 7. Estilos de inputs y selects */
-input, select, datalist {
-  width: 100%;
-  padding: 0.5em;
-  margin-bottom: 0.5em;
-  box-sizing: border-box;
-  color: var(--color-purple);
-}
-
-/* 8. Checkbox con texto al lado */
+/* 7. Checkbox con texto a la derecha */
 .checkbox-container {
   display: flex;
   align-items: center;
@@ -107,7 +117,7 @@ input, select, datalist {
   text-decoration: underline;
 }
 
-/* 9. Botón “Continuar” */
+/* 8. Botón “Continuar” */
 button[type="submit"] {
   background-color: var(--theme-blue);
   color: #fff;
@@ -123,7 +133,3 @@ button[type="submit"] {
 button[type="submit"]:hover {
   opacity: 0.9;
 }
-
-/* 10. Ajustes adicionales */
-h1 { margin-bottom: 0.2em; }
-form { max-width: 600px; margin: 0 auto; }
