@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Paso 1 de 3 – Evaluación de Madurez Digital</title>
+  <style>
+    body { font-family: sans-serif; margin: 2em; }
+    h1, h2 { margin-bottom: 0.3em; }
+    progress { width: 100%; margin-bottom: 1.5em; }
+    fieldset { border: 1px solid #ccc; padding: 1em; margin-bottom: 1em; border-radius: 4px; }
+    legend { font-weight: bold; }
+    label { display: block; margin: 0.5em 0 0.2em; }
+    input[type="checkbox"] + span, input[type="radio"] + span { margin-left: 0.5em; }
+    .slider { width: 100%; max-width: 400px; }
+    .slider-container { margin: 1em 0; }
+    .other-input { display: none; margin-top: 0.5em; }
+    .help {
+      display: inline-block;
+      width: 1em; height: 1em; line-height: 1em; text-align:center;
+      border:1px solid #888; border-radius:50%; margin-left:0.3em; cursor:help;
+    }
+  </style>
+</head>
+<body>
+  <h1>Paso 1 / 3: Cuestionario de Madurez Digital</h1>
+  <progress value="1" max="3"></progress>
+
+  <form id="maturity-form">
+
+    <!-- Selección de rol -->
+    <fieldset>
+      <legend>¿Cuál es tu rol?</legend>
+      <label><input type="radio" name="rol" value="tecnico"><span>Técnico</span></label>
+      <label><input type="radio" name="rol" value="gerencial"><span>Gerencial no técnico</span></label>
+      <label><input type="radio" name="rol" value="tactico"><span>Táctico no técnico</span></label>
+      <label><input type="radio" name="rol" value="operativo"><span>Operativo no técnico</span></label>
+    </fieldset>
+
+    <!-- Sección A -->
+    <h2>Sección A: Detección Básica con Refinamiento</h2>
+
+    <!-- Q1 -->
+    <fieldset>
+      <legend id="q1-legend">1. ¿Qué usos de bases de datos NoSQL tienes en producción? (selección múltiple)
+        <span class="help" id="q1-help">?</span>
+      </legend>
+      <label><input type="checkbox" name="q1" value="ninguno"><span id="q1-opt-0">Ninguno</span></label>
+      <label><input type="checkbox" name="q1" value="poc"><span id="q1-opt-1">PoC o piloto</span></label>
+      <label><input type="checkbox" name="q1" value="catalogos"><span id="q1-opt-2">Catálogos/productos</span></label>
+      <label><input type="checkbox" name="q1" value="logs"><span id="q1-opt-3">Logs/eventos</span></label>
+      <label><input type="checkbox" name="q1" value="grafos"><span id="q1-opt-4">Grafos</span></label>
+      <label><input type="checkbox" name="q1" value="otro" id="q1-otro"><span id="q1-opt-5">Otro</span></label>
+      <input type="text" id="q1-otro-input" class="other-input" placeholder="Especifica otro uso">
+    </fieldset>
+
+    <!-- Q2 -->
+    <fieldset>
+      <legend id="q2-legend">2. ¿Cómo almacenas datos distribuidos? (selección múltiple)
+        <span class="help" id="q2-help">?</span>
+      </legend>
+      <label><input type="checkbox" name="q2" value="ninguno"><span id="q2-opt-0">Ninguno</span></label>
+      <label><input type="checkbox" name="q2" value="datalake"><span id="q2-opt-1">Data lake de pruebas</span></label>
+      <label><input type="checkbox" name="q2" value="hadoop"><span id="q2-opt-2">Clúster Hadoop/Spark</span></label>
+      <label><input type="checkbox" name="q2" value="cache"><span id="q2-opt-3">Caché en memoria</span></label>
+      <label><input type="checkbox" name="q2" value="otro" id="q2-otro"><span id="q2-opt-4">Otro</span></label>
+      <input type="text" id="q2-otro-input" class="other-input" placeholder="Especifica otro método">
+    </fieldset>
+
+    <!-- Q3 -->
+    <fieldset>
+      <legend id="q3-legend">3. ¿Qué motores de búsqueda usas internamente? (selección múltiple)
+        <span class="help" id="q3-help">?</span>
+      </legend>
+      <label><input type="checkbox" name="q3" value="ninguno"><span id="q3-opt-0">Ninguno</span></label>
+      <label><input type="checkbox" name="q3" value="poc"><span id="q3-opt-1">PoC full-text en intranet</span></label>
+      <label><input type="checkbox" name="q3" value="elastic"><span id="q3-opt-2">Elasticsearch/Solr de prueba</span></label>
+      <label><input type="checkbox" name="q3" value="otro" id="q3-otro"><span id="q3-opt-3">Otro</span></label>
+      <input type="text" id="q3-otro-input" class="other-input" placeholder="Especifica otro buscador">
+    </fieldset>
+
+    <!-- Q4 -->
+    <fieldset>
+      <legend id="q4-legend">4. ¿Qué dominios maestros gestionas? (selección múltiple)
+        <span class="help" id="q4-help">?</span>
+      </legend>
+      <label><input type="checkbox" name="q4" value="ninguno"><span id="q4-opt-0">Ninguno</span></label>
+      <label><input type="checkbox" name="q4" value="cliente"><span id="q4-opt-1">Cliente</span></label>
+      <label><input type="checkbox" name="q4" value="producto"><span id="q4-opt-2">Producto</span></label>
+      <label><input type="checkbox" name="q4" value="proveedor"><span id="q4-opt-3">Proveedor</span></label>
+      <label><input type="checkbox" name="q4" value="empleado"><span id="q4-opt-4">Empleado</span></label>
+      <label><input type="checkbox" name="q4" value="otro" id="q4-otro"><span id="q4-opt-5">Otro</span></label>
+      <input type="text" id="q4-otro-input" class="other-input" placeholder="Especifica otro dominio">
+    </fieldset>
+
+    <!-- Q5 -->
+    <fieldset>
+      <legend id="q5-legend">5. ¿Qué prácticas de calidad de datos usas? (selección múltiple)
+        <span class="help" id="q5-help">?</span>
+      </legend>
+      <label><input type="checkbox" name="q5" value="ninguna"><span id="q5-opt-0">Ninguna</span></label>
+      <label><input type="checkbox" name="q5" value="scripts"><span id="q5-opt-1">Scripts ad-hoc</span></label>
+      <label><input type="checkbox" name="q5" value="herramientas"><span id="q5-opt-2">Herramientas DQ básicas</span></label>
+      <label><input type="checkbox" name="q5" value="dashboards"><span id="q5-opt-3">Dashboards periódicos</span></label>
+      <label><input type="checkbox" name="q5" value="otro" id="q5-otro"><span id="q5-opt-4">Otro</span></label>
+      <input type="text" id="q5-otro-input" class="other-input" placeholder="Especifica otra práctica">
+    </fieldset>
+
+    <!-- Q6 -->
+    <fieldset>
+      <legend id="q6-legend">6. ¿Qué políticas de datos has documentado? (selección múltiple)
+        <span class="help" id="q6-help">?</span>
+      </legend>
+      <label><input type="checkbox" name="q6" value="ninguna"><span id="q6-opt-0">Ninguna</span></label>
+      <label><input type="checkbox" name="q6" value="ciclo"><span id="q6-opt-1">Ciclo de vida de datos</span></label>
+      <label><input type="checkbox" name="q6" value="roles"><span id="q6-opt-2">Roles y responsabilidades</span></label>
+      <label><input type="checkbox" name="q6" value="seguridad"><span id="q6-opt-3">Seguridad y retención</span></label>
+      <label><input type="checkbox" name="q6" value="otro" id="q6-otro"><span id="q6-opt-4">Otro</span></label>
+      <input type="text" id="q6-otro-input" class="other-input" placeholder="Especifica otra política">
+    </fieldset>
+
+    <!-- Sección B -->
+    <h2>Sección B: Prácticas Transversales Avanzadas</h2>
+
+    <!-- Q7 -->
+    <fieldset>
+      <legend id="q7-legend">7. Gobernanza de Data Lake (1 – 5):
+        <span class="help" id="q7-help">?</span>
+      </legend>
+      <p id="q7-prompt">¿Hasta qué punto tu data lake está gobernado con modelado automático, réplica y monitoreo?</p>
+      <div class="slider-container">
+        <input type="range" id="q7" name="q7" min="1" max="5" value="3" class="slider">
+        <div>Valor: <span id="q7-val"></span></div>
+      </div>
+    </fieldset>
+
+    <!-- Q8 -->
+    <fieldset>
+      <legend id="q8-legend">8. Búsqueda y Calidad (1 – 5):
+        <span class="help" id="q8-help">?</span>
+      </legend>
+      <p id="q8-prompt">“Mi motor de búsqueda ajusta relevancia y limpia índices basándose en métricas de calidad.”</p>
+      <div class="slider-container">
+        <input type="range" id="q8" name="q8" min="1" max="5" value="3" class="slider">
+        <div>Valor: <span id="q8-val"></span></div>
+      </div>
+    </fieldset>
+
+    <!-- Q9 -->
+    <fieldset>
+      <legend id="q9-legend">9. Gobernanza de MDM + Calidad + Políticas (selección múltiple)
+        <span class="help" id="q9-help">?</span>
+      </legend>
+      <label><input type="checkbox" name="q9" value="pilot"><span id="q9-opt-0">Pilotos con validación manual</span></label>
+      <label><input type="checkbox" name="q9" value="defined"><span id="q9-opt-1">Workflows definidos y roles</span></label>
+      <label><input type="checkbox" name="q9" value="auto"><span id="q9-opt-2">Validaciones automáticas en pipelines</span></label>
+      <label><input type="checkbox" name="q9" value="policy_code"><span id="q9-opt-3">Políticas-as-code con alertas</span></label>
+      <label><input type="checkbox" name="q9" value="otro" id="q9-otro"><span id="q9-opt-4">Otro</span></label>
+      <input type="text" id="q9-otro-input" class="other-input" placeholder="Especifica otra práctica">
+    </fieldset>
+
+    <button type="submit">Siguiente</button>
+  </form>
+
+  <script>
+    const textos = {
+      tecnico: {
+        q1_legend: "1. ¿Qué usos de bases de datos NoSQL tienes en producción? (selección múltiple)",
+        q1_help:    "Bases de datos no relacionales con escalabilidad horizontal.",
+        q1_opts:    ["Ninguno","PoC o piloto","Catálogos/productos","Logs/eventos","Grafos","Otro"],
+        q2_legend: "2. ¿Cómo almacenas datos distribuidos? (selección múltiple)",
+        q2_help:   "Replicación y particionado en plataformas de big data.",
+        q2_opts:   ["Ninguno","Data lake de pruebas","Clúster Hadoop/Spark","Caché en memoria","Otro"],
+        q3_legend: "3. ¿Qué motores de búsqueda usas internamente? (selección múltiple)",
+        q3_help:   "Servicios de búsqueda de texto completo en tus sistemas.",
+        q3_opts:   ["Ninguno","PoC full-text en intranet","Elasticsearch/Solr de prueba","Otro"],
+        q4_legend: "4. ¿Qué dominios maestros gestionas? (selección múltiple)",
+        q4_help:   "Entidades clave para master data management.",
+        q4_opts:   ["Ninguno","Cliente","Producto","Proveedor","Empleado","Otro"],
+        q5_legend: "5. ¿Qué prácticas de calidad de datos usas? (selección múltiple)",
+        q5_help:   "Validaciones y monitoreo de completitud/exactitud.",
+        q5_opts:   ["Ninguna","Scripts ad-hoc","Herramientas DQ básicas","Dashboards periódicos","Otro"],
+        q6_legend: "6. ¿Qué políticas de datos has documentado? (selección múltiple)",
+        q6_help:   "Normas sobre ciclo de vida y retención de datos.",
+        q6_opts:   ["Ninguna","Ciclo de vida de datos","Roles y responsabilidades","Seguridad y retención","Otro"],
+        q7_legend: "7. Gobernanza de Data Lake (1 – 5):",
+        q7_help:   "Nivel de modelado, partición, réplica y monitoreo.",
+        q7_prompt:"¿Hasta qué punto tu data lake está gobernado con modelado automático, réplica y monitoreo?",
+        q8_legend: "8. Búsqueda y Calidad (1 – 5):",
+        q8_help:   "Automatización de relevancia y limpieza de índices.",
+        q8_prompt:"“Mi motor de búsqueda ajusta relevancia y limpia índices basándose en métricas de calidad.”",
+        q9_legend: "9. Gobernanza de MDM + Calidad + Políticas (selección múltiple)",
+        q9_help:   "Automatización en validaciones y políticas de datos maestros.",
+        q9_opts:   ["Pilotos con validación manual","Workflows definidos y roles","Validaciones automáticas en pipelines","Políticas-as-code con alertas","Otro"]
+      },
+      gerencial: {
+        q1_legend: "1. ¿Qué plataformas de datos emergentes tienes en producción? (selección múltiple)",
+        q1_help:    "Soluciones modernas de datos en entorno productivo.",
+        q1_opts:    ["Ninguna","Prueba piloto","Catálogo de productos","Registro de eventos","Modelos de relaciones","Otro"],
+        q2_legend: "2. ¿Qué soluciones de datos distribuidos implementan? (selección múltiple)",
+        q2_help:    "Opciones de almacenamiento escalable en la organización.",
+        q2_opts:    ["Ninguna","Data lake de pruebas","Clúster Hadoop/Spark","Caché en memoria","Otro"],
+        q3_legend: "3. ¿Qué motores de búsqueda emplean en su intranet? (selección múltiple)",
+        q3_help:    "Herramientas de búsqueda corporativa.",
+        q3_opts:    ["Ninguno","PoC full-text en intranet","Elasticsearch/Solr de prueba","Otro"],
+        q4_legend: "4. ¿Qué dominios de negocio mantienen como maestros? (selección múltiple)",
+        q4_help:    "Entidades principales en sus procesos.",
+        q4_opts:    ["Ninguno","Cliente","Producto","Proveedor","Empleado","Otro"],
+        q5_legend: "5. ¿Qué métricas de calidad monitorean? (selección múltiple)",
+        q5_help:    "KPIs de completitud, consistencia y precisión.",
+        q5_opts:    ["Ninguna","Scripts ad-hoc","Herramientas DQ básicas","Dashboards periódicos","Otro"],
+        q6_legend: "6. ¿Qué políticas corporativas han definido? (selección múltiple)",
+        q6_help:    "Lineamientos de datos y gobernanza.",
+        q6_opts:    ["Ninguna","Ciclo de vida de datos","Roles y responsabilidades","Seguridad y retención","Otro"],
+        q7_legend: "7. Nivel de gobernanza del repositorio (1 – 5):",
+        q7_help:    "Control y supervisión del repositorio central.",
+        q7_prompt:  "¿Qué tan gobernado está tu repositorio central en automatización y monitoreo?",
+        q8_legend: "8. Grado de optimización de búsqueda (1 – 5):",
+        q8_help:    "Ajuste automático de la relevancia y purga de índices.",
+        q8_prompt:  "¿Cómo de automatizada está la optimización de tu motor de búsqueda?",
+        q9_legend: "9. Automatización de MDM y políticas (selección múltiple)",
+        q9_help:    "Grado de automatización en master data y reglas.",
+        q9_opts:    ["Pilotos manuales","Flujos de trabajo definidos","Validaciones automáticas","Políticas como código","Otro"]
+      },
+      tactico: {
+        q1_legend: "1. ¿Qué bases de datos nuevas usas en producción? (selección múltiple)",
+        q1_help:    "Tecnologías de almacenamiento distribuido.",
+        q1_opts:    ["Ninguno","Prueba piloto","Catálogo de productos","Registros de actividades","Grafos","Otro"],
+        q2_legend: "2. ¿Cómo gestionas datos distribuidos? (selección múltiple)",
+        q2_help:    "Métodos para almacenar y procesar datos a gran escala.",
+        q2_opts:    ["Ninguno","Data lake de pruebas","Clúster Hadoop/Spark","Caché en memoria","Otro"],
+        q3_legend: "3. ¿Qué buscadores usas en tu área? (selección múltiple)",
+        q3_help:    "Motores de búsqueda para consultas internas.",
+        q3_opts:    ["Ninguno","PoC full-text en intranet","Elasticsearch/Solr de prueba","Otro"],
+        q4_legend: "4. ¿Qué dominios operativos manejas? (selección múltiple)",
+        q4_help:    "Datos maestros en tu proceso operacional.",
+        q4_opts:    ["Ninguno","Cliente","Producto","Proveedor","Empleado","Otro"],
+        q5_legend: "5. ¿Qué checks de calidad aplicas? (selección múltiple)",
+        q5_help:    "Validaciones rutinarias de datos.",
+        q5_opts:    ["Ninguna","Scripts ad-hoc","Herramientas DQ básicas","Dashboards periódicos","Otro"],
+        q6_legend: "6. ¿Qué normas de datos sigues? (selección múltiple)",
+        q6_help:    "Procedimientos y roles definidos.",
+        q6_opts:    ["Ninguna","Ciclo de vida de datos","Roles y responsabilidades","Seguridad y retención","Otro"],
+        q7_legend: "7. Supervisión del data lake (1 – 5):",
+        q7_help:    "Monitoreo y parametrización del data lake.",
+        q7_prompt:  "Califica el nivel de supervisión de tu data lake.",
+        q8_legend: "8. Ajuste automático de búsqueda (1 – 5):",
+        q8_help:    "Capacidad de autoajuste del motor de búsqueda.",
+        q8_prompt:  "¿Cómo de autoajustable es tu motor de búsqueda?",
+        q9_legend: "9. Automatización de MDM y DQ (selección múltiple)",
+        q9_help:    "Grado de automatización en master data y calidad.",
+        q9_opts:    ["Pilotos manuales","Flujos definidos","Validación automática","Políticas-as-code","Otro"]
+      },
+      operativo: {
+        q1_legend: "1. ¿Qué tecnologías de datos empleas día a día? (selección múltiple)",
+        q1_help:    "Herramientas y sistemas de datos en tu rutina.",
+        q1_opts:    ["Ninguna","Prueba piloto","Catálogo de productos","Registros de eventos","Relaciones en grafo","Otro"],
+        q2_legend: "2. ¿Cómo almacenas datos en tu trabajo? (selección múltiple)",
+        q2_help:    "Formas de guardar y acceder a datos operativos.",
+        q2_opts:    ["Ninguno","Data lake de pruebas","Clúster Hadoop/Spark","Caché en memoria","Otro"],
+        q3_legend: "3. ¿Qué buscadores usas en tu puesto? (selección múltiple)",
+        q3_help:    "Sistemas de búsqueda de tu entorno.",
+        q3_opts:    ["Ninguno","PoC full-text en intranet","Elasticsearch/Solr de prueba","Otro"],
+        q4_legend: "4. ¿Qué datos maestros tocas? (selección múltiple)",
+        q4_help:    "Datos principales de tu proceso diario.",
+        q4_opts:    ["Ninguno","Cliente","Producto","Proveedor","Empleado","Otro"],
+        q5_legend: "5. ¿Qué controles de calidad ejecutas? (selección múltiple)",
+        q5_help:    "Tareas de validación de datos rutinarias.",
+        q5_opts:    ["Ninguna","Scripts ad-hoc","Herramientas DQ básicas","Dashboards periódicos","Otro"],
+        q6_legend: "6. ¿Qué procedimientos de datos sigues? (selección múltiple)",
+        q6_help:    "Normas internas para manejo de datos.",
+        q6_opts:    ["Ninguna","Ciclo de vida de datos","Roles y responsabilidades","Seguridad y retención","Otro"],
+        q7_legend: "7. Monitoreo del repositorio (1 – 5):",
+        q7_help:    "Calidad de monitoreo y parametrización.",
+        q7_prompt:  "Evalúa la monitorización de tu repositorio de datos.",
+        q8_legend: "8. Mantenimiento de búsqueda (1 – 5):",
+        q8_help:    "Capacidad de actualización automática.",
+        q8_prompt:  "¿Cómo de automática es la actualización de tu motor de búsqueda?",
+        q9_legend: "9. ¿Qué nivel de automatización aplica? (selección múltiple)",
+        q9_help:    "Nivel de automatización en políticas de datos.",
+        q9_opts:    ["Manual","Flujos definidos","Validación automática","Políticas programáticas","Otro"]
+      }
+    };
+
+    // Listener de cambio de rol
+    document.querySelectorAll('input[name="rol"]').forEach(radio =>
+      radio.addEventListener('change', e => {
+        const t = textos[e.target.value];
+
+        // Función de ayuda para sustituir preguntas múltiples
+        function sustituir(n) {
+          document.getElementById(`q${n}-legend`).childNodes[0].nodeValue = t[`q${n}_legend`];
+          document.getElementById(`q${n}-help`).title = t[`q${n}_help`] || "";
+          if (t[`q${n}_opts`]) {
+            t[`q${n}_opts`].forEach((opt,i) => {
+              const id = `q${n}-opt-${i}`;
+              if (document.getElementById(id)) 
+                document.getElementById(id).textContent = opt;
+            });
+          }
+          if (t[`q${n}_prompt`]) {
+            document.getElementById(`q${n}-prompt`).textContent = t[`q${n}_prompt`];
+          }
+        }
+
+        [1,2,3,4,5,6,7,8,9].forEach(sustituir);
+      })
+    );
+
+    // Sliders
+    const etiquetas = {
+      q7: {
+        1: " Exploratorio",
+        2: " Básico",
+        3: " Definido",
+        4: " Optimizado",
+        5: " Avanzado"
+      },
+      q8: {
+        1: "Muy bajo",
+        2: "Bajo",
+        3: "Medio",
+        4: "Alto",
+        5: "Muy alto"
+      }
+    };
+
+    ['q7','q8'].forEach(id=>{
+      const slider = document.getElementById(id),
+            label  = document.getElementById(id+'-val');
+      slider.addEventListener('input', () => {
+        const val = slider.value;
+        label.textContent = etiquetas[id][val];
+      });
+    });
+
+
+
+    // Mostrar/Ocultar campo "Otro"
+    [1,2,3,4,5,6,9].forEach(n=>{
+      const cb=document.getElementById(`q${n}-otro`);
+      if (!cb) return;
+      cb.addEventListener('change', e=>{
+        document.getElementById(`q${n}-otro-input`).style.display = e.target.checked?'block':'none';
+      });
+    });
+
+    // Envío
+    document.getElementById('maturity-form').addEventListener('submit', e=>{
+      e.preventDefault();
+      // … envío, validaciones, etc. …
+      alert('Formulario enviado. Pasamos al siguiente paso.');
+    });
+  </script>
+</body>
+</html>
