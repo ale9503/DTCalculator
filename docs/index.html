@@ -1,4 +1,3 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,13 +7,14 @@
   <!-- Fuente Poppins -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 
-  <!-- TU CSS -->
-  <link rel="stylesheet" href="styles.css">
+  <!-- Tu CSS global -->
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 
 <body>
+  <!-- Paso 1 / 3: ahora el h1 heredará el font-size de 2rem -->
   <h1>Paso 1 / 3: Completa tus datos</h1>
-  <progress value="2" max="3"></progress>
+  <progress value="1" max="3"></progress>
 
   <form id="lead-form">
     <label for="name">Nombre completo:</label>
@@ -26,6 +26,15 @@
     <label for="company">Nombre de la Empresa donde trabajas:</label>
     <input type="text" id="company" name="company" required>
 
+    <label for="company_code">Ingresa código de la empresa:</label>
+    <div class="input-faq-group">
+      <input type="text" id="company_code" name="company_code" required>
+      <span class="faq-icon"
+            title="Al usar este código, todas las personas que diligencien la calculadora recibirán su reporte junto con un consolidado por empresa y áreas">
+        ❓
+      </span>
+    </div>
+
     <label>Tipo de rol:</label>
     <div class="role-group">
       <label><input type="radio" name="role_type" value="estrategico" required> Estratégico (Alta gerencia)</label>
@@ -36,60 +45,30 @@
     <label for="area">Área o Departamento:</label>
     <select id="area" name="area" required>
       <option value="" disabled selected>Selecciona...</option>
-      <option value="finanzas">Finanzas</option>
-      <option value="marketing">Marketing</option>
-      <option value="it">TI / Sistemas</option>
-      <option value="rrhh">Recursos Humanos</option>
-      <option value="operaciones">Operaciones</option>
-      <option value="ventas">Ventas</option>
-      <option value="logistica">Logística</option>
-      <option value="legal">Legal</option>
-      <option value="investigacion">I+D</option>
-      <option value="atencion_cliente">Atención al Cliente</option>
-      <option value="otro">Otro</option>
+      <!-- ... más opciones ... -->
     </select>
 
     <label for="industry">Sector / Industria:</label>
     <select id="industry" name="industry" required>
       <option value="" disabled selected>Selecciona...</option>
-      <option value="agricultura">Agricultura</option>
-      <option value="alimentacion">Alimentación</option>
-      <option value="construccion">Construcción</option>
-      <option value="educacion">Educación</option>
-      <option value="energia">Energía</option>
-      <option value="finanzas">Finanzas</option>
-      <option value="salud">Salud</option>
-      <option value="manufactura">Manufactura</option>
-      <option value="retail">Retail</option>
-      <option value="telecomunicaciones">Telecomunicaciones</option>
-      <option value="transporte">Transporte</option>
-      <option value="turismo">Turismo</option>
-      <option value="tecnologia">Tecnología</option>
-      <option value="otro">Otro</option>
+      <!-- ... más opciones ... -->
     </select>
 
     <label for="size">Tamaño de la empresa:</label>
     <select id="size" name="size" required>
       <option value="" disabled selected>Selecciona...</option>
-      <option value="1-10">1–10 empleados</option>
-      <option value="11-50">11–50 empleados</option>
-      <option value="51-200">51–200 empleados</option>
-      <option value="201-500">201–500 empleados</option>
-      <option value="501-1000">501–1,000 empleados</option>
-      <option value="1001-5000">1,001–5,000 empleados</option>
-      <option value="5001+">Más de 5,000 empleados</option>
+      <!-- ... más opciones ... -->
     </select>
 
     <label for="region">País / Región:</label>
     <input list="countries" id="region" name="region" placeholder="Empieza a escribir..." required>
     <datalist id="countries">
-      <!-- ...opciones de países... -->
+      <!-- ... lista de países ... -->
     </datalist>
 
-    <!-- 2) y 3) Duplicamos y mapeamos el slider con texto -->
     <label for="digital_company">
       Nivel de digitalización percibido de la empresa:
-      <span title="en el nivel 0 no existe la capacidad; el nivel 1 la aborda de forma reactiva y puntual; el nivel 2 empieza a formalizar procesos y herramientas básicas; el nivel 3 la integra estratégicamente con procesos documentados, roles claros y soluciones estándar; el nivel 4 optimiza operaciones mediante automatización, métricas y plataformas avanzadas; y el nivel 5 la consolida como ventaja competitiva, con procesos end-to-end sinérgicos, una cultura de innovación y un ecosistema de herramientas maduras que impulsan la mejora continua">❓</span>
+      <span title="…descripción detallada…">❓</span>
     </label>
     <div class="slider-container">
       <input type="range" id="digital_company" name="digital_company" min="1" max="5" value="2" class="slider">
@@ -98,7 +77,7 @@
 
     <label for="digital_area">
       Nivel de digitalización percibido del área:
-      <span title="en el nivel 0 no existe la capacidad; el nivel 1 la aborda de forma reactiva y puntual; el nivel 2 empieza a formalizar procesos y herramientas básicas; el nivel 3 la integra estratégicamente con procesos documentados, roles claros y soluciones estándar; el nivel 4 optimiza operaciones mediante automatización, métricas y plataformas avanzadas; y el nivel 5 la consolida como ventaja competitiva, con procesos end-to-end sinérgicos, una cultura de innovación y un ecosistema de herramientas maduras que impulsan la mejora continual">❓</span>
+      <span title="…descripción detallada…">❓</span>
     </label>
     <div class="slider-container">
       <input type="range" id="digital_area" name="digital_area" min="1" max="5" value="2" class="slider">
@@ -108,7 +87,6 @@
     <label for="phone">Teléfono de contacto:</label>
     <input type="tel" id="phone" name="phone">
 
-    <!-- 4) Checkbox alineado y link a privacy.html -->
     <div class="checkbox-container">
       <input type="checkbox" id="consent" name="consent" required>
       <label for="consent">
@@ -116,37 +94,24 @@
       </label>
     </div>
 
-    <!-- 5) Botón renombrado -->
     <button type="submit">Continuar</button>
   </form>
 
   <script>
-    // Mapa de niveles
-    const levelLabels = {
-      1: "Exploratorio",
-      2: "Básico",
-      3: "Definido",
-      4: "Optimizado",
-      5: "Avanzado"
-    };
-
-    // Función para inicializar y actualizar un slider
-    function setupSlider(sliderId, outputId) {
-      const slider = document.getElementById(sliderId);
-      const output = document.getElementById(outputId);
-      const update = () => {
-        output.textContent = levelLabels[slider.value];
-      };
-      slider.addEventListener('input', update);
-      update(); // valor inicial
+    // Slider labels
+    const levelLabels = {1:"Exploratorio",2:"Básico",3:"Definido",4:"Optimizado",5:"Avanzado"};
+    function setupSlider(idIn, idOut) {
+      const s = document.getElementById(idIn), o = document.getElementById(idOut);
+      s.addEventListener('input', ()=> o.textContent = levelLabels[s.value]);
+      o.textContent = levelLabels[s.value];
     }
+    setupSlider('digital_company','dl-company-val');
+    setupSlider('digital_area','dl-area-val');
 
-    setupSlider('digital_company', 'dl-company-val');
-    setupSlider('digital_area', 'dl-area-val');
-
-    document.getElementById('lead-form').addEventListener('submit', function(e) {
+    // Guardar datos en sessionStorage y redirigir
+    document.getElementById('lead-form').addEventListener('submit', e => {
       e.preventDefault();
-      // ... envio del formulario ...
+      new FormData(e.target).forEach((v,k) => sessionStorage.setItem(k,v));
       window.location.href = 'maturity.html';
     });
   </script>
