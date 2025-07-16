@@ -343,7 +343,10 @@
       new FormData(e.target).forEach((value, key) => {
         data[key] = value;
       });
-    
+
+      // 3) Añadir fecha y hora actuales al JSON
+      data.fechaHora = new Date().toISOString();  // e.g. "2025-07-16T20:45:30.123Z"
+      
       try {
         // 3) Enviar JSON al backend
         const response = await fetch('https://<TU_BACKEND_URL>/procesar', {
