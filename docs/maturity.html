@@ -143,6 +143,8 @@
     </fieldset>
 
     <button type="submit">Siguiente</button>
+    <button type="button" id="back-button">Atrás</button>
+
   </form>
 
   <script>
@@ -369,6 +371,10 @@
         alert('No se pudo conectar con el servidor. Revisa tu conexión.');
       }
     });
+    document.getElementById('back-button')
+      .addEventListener('click', () => {
+        window.location.href = 'index.html';
+      });
   </script>
 </body>
 </html>
