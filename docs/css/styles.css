@@ -124,3 +124,20 @@ button[type="submit"] {
 button[type="submit"]:hover {
   opacity: 0.9;
 }
+
+/* Botón continuar */
+button[id="back-button"] {
+  background-color: var(--theme-blue);
+  color: #fff;
+  padding: 0.75em 1.5em;
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 1em;
+}
+button[type="submit"]:hover {
+  opacity: 0.9;
+}
