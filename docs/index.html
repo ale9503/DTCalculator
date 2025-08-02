@@ -172,6 +172,47 @@
       new FormData(e.target).forEach((v,k) => sessionStorage.setItem(k,v));
       window.location.href = 'maturity.html';
     });
+        // Rellenar formulario con datos guardados
+    window.addEventListener('DOMContentLoaded', () => {
+      const data = sessionStorage;
+      // Textos y datalist
+      ['name','email','company','company_code','region','phone']
+        .forEach(id => {
+          const el = document.getElementById(id);
+          const val = data.getItem(id);
+          if (val !== null) el.value = val;
+        });
+      // Radios (role_type)
+      const role = data.getItem('role_type');
+      if (role) {
+        const r = document.querySelector(`input[name="role_type"][value="${role}"]`);
+        if (r) r.checked = true;
+      }
+      // Selects (area, industry, size)
+      ['area','industry','size']
+        .forEach(id => {
+          const sel = document.getElementById(id);
+          const val = data.getItem(id);
+          if (val) sel.value = val;
+        });
+      // Checkbox (consent)
+      if (data.getItem('consent') !== null) {
+        document.getElementById('consent').checked = true;
+      }
+      // Sliders y sus labels
+      ['digital_company','digital_area']
+        .forEach(id => {
+          const slider = document.getElementById(id);
+          const label = document.getElementById(
+            id==='digital_company' ? 'dl-company-val' : 'dl-area-val'
+          );
+          const val = data.getItem(id);
+          if (val !== null) {
+            slider.value = val;
+            label.textContent = levelLabels[val];
+          }
+        });
+    });
   </script>
 </body>
 </html>
