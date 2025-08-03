@@ -364,7 +364,7 @@
 
       try {
         // 3) Enviar JSON al backend
-        const response = await fetch('https://<TU_BACKEND_URL>/procesar', {
+        const response = await fetch('https://api.quantlabtesting.com/procesar', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(data)
