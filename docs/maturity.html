@@ -340,8 +340,8 @@
       });
     });
 
-    // Envío en JSON
-    document.getElementById('maturity-form').addEventListener('submit', async e => {
+    // Envío en JSON sin bloquear la navegación
+    document.getElementById('maturity-form').addEventListener('submit', e => {
       e.preventDefault();
     
       // 1) Recoger datos de página 1 (sessionStorage)
@@ -355,32 +355,34 @@
       new FormData(e.target).forEach((value, key) => {
         data[key] = value;
       });
-
-      // 3) Añadir fecha y hora actuales al JSON
-      data.fechaHora = new Date().toISOString();  // e.g. "2025-07-16T20:45:30.123Z"
-      
-      // 4) Crear rawID como concatenación de campos clave
+    
+      // 3) Timestamp y rawID
+      data.fechaHora = new Date().toISOString();
       data.rawID = `${data.nombre || ''}${data.company_code || ''}${data.area || ''}${data.fechaHora}`;
-
+    
+      // (Opcional) Evitar doble clic
+      const submitBtn = e.target.querySelector('button[type="submit"]');
+      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Enviando…'; }
+    
+      // 4) Disparo en background (no esperamos respuesta)
+      const payload = JSON.stringify(data);
       try {
-        // 3) Enviar JSON al backend
-        const response = await fetch('https://api.quantlabtesting.com/procesar', {
+        const blob = new Blob([payload], { type: 'application/json' });
+        navigator.sendBeacon('https://api.quantlabtesting.com/procesar', blob);
+      } catch {
+        // Fallback: keepalive permite continuar el POST tras navegar
+        fetch('https://api.quantlabtesting.com/procesar', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        });
-    
-        // 4) Validar HTTP 200 y redirigir
-        if (response.ok) {
-          window.location.href = 'success.html';
-        } else {
-          alert('Error al enviar los datos. Por favor, inténtalo de nuevo.');
-        }
-      } catch (err) {
-        console.error('Error de conexión:', err);
-        alert('No se pudo conectar con el servidor. Revisa tu conexión.');
+          body: payload,
+          keepalive: true
+        }).catch(()=>{});
       }
+    
+      // 5) Cambio de vista inmediato
+      window.location.href = 'success.html';
     });
+
     document.getElementById('back-button')
       .addEventListener('click', () => {
         window.location.href = 'index.html';
